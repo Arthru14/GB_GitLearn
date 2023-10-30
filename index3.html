@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Простой чат</title>
+    <style>
+        #chat-messages {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        #message-input {
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function sendMessage() {
+            var name = document.getElementById("name-input").value;
+            var message = document.getElementById("message-input").value;
+
+            if (message === "") {
+                alert("Пожалуйста, введите сообщение.");
+                return;
+            }
+
+            var chatMessages = document.getElementById("chat-messages");
+            var newMessage = document.createElement("div");
+            if (name !== "") {
+                newMessage.textContent = name + ": " + message;
+            } else {
+                newMessage.textContent = "Аноним: " + message;
+            }
+            chatMessages.appendChild(newMessage);
+
+            document.getElementById("message-input").value = "";
+        }
+    </script>
+</head>
+<body>
+    <h1>Простой чат</h1>
+
+    <div id="chat-messages"></div>
+
+    <div>
+        <label for="name-input">Имя:</label>
+        <input type="text" id="name-input"><br>
+
+        <label for="message-input">Сообщение:</label>
+        <input type="text" id="message-input">
+
+        <button onclick="sendMessage()">Отправить</button>
+    </div>
+</body>
+</html>
